@@ -694,9 +694,7 @@ unparse_filesystem_flags (const char           *path,
     case FLATPAK_FILESYSTEM_MODE_READ_ONLY:
       g_string_append (s, ":ro");
       break;
-[context]
-<other permissions>
-filesystems=home;
+
     case FLATPAK_FILESYSTEM_MODE_CREATE:
       g_string_append (s, ":create");
       break;
