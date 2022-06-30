@@ -817,6 +817,10 @@ parse_filesystem_flags (const char            *filesystem,
           g_string_append (s, "-reset");
         }
     }
+  else
+    {
+        g_warning ("It is recommended to explicitly use :rw for read-write access");
+    }
 
   /* Postcondition check: the code above should make some results
    * impossible */
