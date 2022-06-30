@@ -700,6 +700,7 @@ unparse_filesystem_flags (const char           *path,
       break;
 
     case FLATPAK_FILESYSTEM_MODE_READ_WRITE:
+      g_string_append (s, ":rw");
       break;
 
     case FLATPAK_FILESYSTEM_MODE_NONE:
