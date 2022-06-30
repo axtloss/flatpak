@@ -817,10 +817,6 @@ parse_filesystem_flags (const char            *filesystem,
           g_string_append (s, "-reset");
         }
     }
-  else
-    {
-        g_warning ("It is recommended to explicitly use :rw for read-write access");
-    }
 
   /* Postcondition check: the code above should make some results
    * impossible */
@@ -1186,6 +1182,9 @@ option_filesystem_cb (const gchar *option_name,
   FlatpakContext *context = data;
   g_autofree char *fs = NULL;
   FlatpakFilesystemMode mode;
+
+  if (strstr(value, ":create") == NULL && strstr(value, ":rw") == NULL && strstr(value, ":ro") == NULL)
+      g_warning ("It is recommended to explicitly use :rw for read-write access");
 
   if (!flatpak_context_parse_filesystem (value, FALSE, &fs, &mode, error))
     return FALSE;
